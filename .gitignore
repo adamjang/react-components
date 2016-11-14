@@ -1,0 +1,8 @@
+.DS_Store
+
+# LIBRARIES
+bower_components
+node_modules
+
+# Ignore the conflict files
+*.orig
