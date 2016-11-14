@@ -1,0 +1,43 @@
+.jbs-content-container{
+	.jbs-input-icon-container{
+		.jbs-input{
+			padding: 5px 0;
+		}
+	}	
+}
+.jbs-input-icon-container{
+	position: relative;
+
+	.jbs-icon-search,
+	.jbs-icon-clear{
+		position: absolute;
+		font-size: 15px;
+		padding: 9px 12px;
+	}
+
+	.jbs-icon-search{
+		left:0px;
+		pointer-events: none;
+	}
+
+	.jbs-icon-clear{
+		right:0;
+		top:0;
+		cursor: pointer;
+	}
+
+	.jbs-input{
+		padding: 5px 30px;
+		width: 100%;
+	}
+}
+#pstable{
+	.jbs-icon-clear,
+	.jbs-icon-search{
+		padding: 17px 12px;
+	}
+	.jbs-input{
+		padding: 15px 40px;
+		width: 100%;
+	}
+}

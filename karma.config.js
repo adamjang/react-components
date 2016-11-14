@@ -2,10 +2,10 @@ const webpack = require('webpack')
 const argv = require('yargs').argv
 const path = require('path')
 
-const aliases = require('./webpack/alias')
-const config = require('./webpack/settings')
+const aliases = require('./webpack/aliases')
+// const config = require('./webpack/settings')
 const loaders = require('./webpack/loaders')
-const preloaders = require('./webpack/preloaders')
+// const preloaders = require('./webpack/preloaders')
 
 const karmaConfig = (config) => {
   config.set({
@@ -28,19 +28,13 @@ const karmaConfig = (config) => {
     files: [
       './node_modules/babel-polyfill/dist/polyfill.js',
       './node_modules/phantomjs-polyfill/bind-polyfill.js',
-      './app/components/**/__test/test.jsx',
-      './app/components/**/__test/test.js',
-      './app/components/**/**/__test/test.jsx',
-      './app/components/**/**/__test/test.js',
-      './app/maps/**/__test/test.jsx',
-      './app/maps/**/__test/test.js',
-      './app/maps/**/**/__test/test.jsx',
-      './app/maps/**/**/__test/test.js'
+      './src/components/**/__test/test.jsx',
+      './src/components/**/__test/test.js'
     ],
     preprocessors: {
       // these files we want to be precompiled with webpack
       // also run tests throug sourcemap for easier debugging
-      ['./app/**/**/__test/*']: ['webpack', 'sourcemap']
+      ['./src/**/**/__test/*']: ['webpack', 'sourcemap']
     },
     // A lot of people will reuse the same webpack config that they use
     // in development for karma but remove any production plugins like UglifyJS etc.
@@ -50,7 +44,7 @@ const karmaConfig = (config) => {
        resolve: {
         // allow us to import components in tests like:
         // import Example from 'components/Example';
-        root: path.resolve(__dirname, './app'),
+        root: path.resolve(__dirname, './src'),
 
         // allow us to avoid including extension name
         extensions: ['', '.js', '.jsx'],
