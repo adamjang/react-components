@@ -7,7 +7,4 @@ export default [
       presets: ['es2015', 'react']
     }
   }
-}
-
-
 ]
