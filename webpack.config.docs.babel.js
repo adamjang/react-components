@@ -3,30 +3,44 @@ import path from 'path'
 
 // # IMPORT WEBPACK CONFIGS
 import loaders from './webpack/loaders.js'
-console.log('confffs', path.join(__dirname, 'docs/build'))
+import preLoaders from './webpack/preloaders.js'
 
 const config = {
   devServer: {
     inline: true,
     port: 8008
   },
-  entry: [
-    './docs/src/index.jsx'
-  ],
+  devtool: 'eval',
+  eslint: {
+    configFile: './.eslintrc'
+  },
+  entry: {
+    docs: './docs/src/index.jsx',
+    lib: './lib/skeleton.js'
+  },
   output: {
-    path: path.join(__dirname, 'docs/build'),
-    filename: 'app.js',
-    publicPath: '../build/'
+    path: path.resolve(__dirname, '/docs/build'),
+    publicPath: '/assets/',
+    filename: '[name].js'
   },
   plugins: [
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({ minimize: true })
+    new webpack.optimize.UglifyJsPlugin({
+      minimize: true,
+      compress: {
+          warnings: false
+      }
+    })
   ],
   module: {
-    loaders
+    loaders,
+    preLoaders
   },
   resolve: {
+    alias: {
+      skeleton: path.resolve(__dirname, './lib/skeleton.js')
+    },
     root: path.resolve('./build/src'),
     extensions: ['', '.js', '.jsx']
   }

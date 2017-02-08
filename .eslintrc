@@ -1,0 +1,54 @@
+{
+    # Super insenely strict linting, worse than Crockford. Seriously.
+    # "extends": ["eslint:recommended", "plugin:react/recommended"],
+    "extends": "airbnb",
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true,
+            "experimentalObjectRestSpread": true
+        }
+    },
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "plugins": [
+        "react"
+    ],
+    "globals":{
+        "beforeEach": true,
+        "afterEach": true,
+        "describe": true,
+        "it": true,
+        "React": true,
+        "ol": true
+    },
+    "rules": {
+        "no-console": ["error", { allow: ["warn", "error", "log"] }],
+        "no-debugger": "error",
+        "comma-dangle": ["error", "never"],
+        "semi": ["error", "never"],
+        "padded-blocks": ["error", { "classes": "always", "blocks": "never", "switches": "always" }],
+        "keyword-spacing": ["error", { "overrides": {
+          "if": { "after": false },
+          "for": { "after": false },
+          "while": { "after": false }
+        } }],
+        "no-did-mount-set-state":["off", "never"],
+        "react/no-did-mount-set-state": "off",
+        "react/jsx-closing-bracket-location": ["error", {
+          "nonEmpty": "after-props",
+          "selfClosing": "after-props"
+        }],
+        "react/jsx-no-bind": ["error", {
+          "allowArrowFunctions": true
+        }],
+        "no-param-reassign": "off",
+        "one-var": "off",
+        "dot-notation": "off",
+        "max-statements": ["error", 30],
+        "react/prefer-stateless-function": "warn"
+  }
+}

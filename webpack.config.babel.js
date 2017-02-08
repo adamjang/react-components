@@ -3,8 +3,9 @@ import path from 'path'
 
 // # IMPORT WEBPACK CONFIGS
 import loaders from './webpack/loaders.js'
+import preLoaders from './webpack/preloaders.js'
 
-const libraryName = 'react-components'
+const libraryName = 'skeleton'
 const inputPath = '/src'
 const outputPath = '/lib'
 
@@ -16,23 +17,31 @@ const env = process.env.WEBPACK_ENV
 
 // # BUILD PROD(MINIFIED)
 if (env === 'build') {
-  plugins.push(new UglifyJsPlugin({ minimize: true }))
+  plugins.push(new UglifyJsPlugin({
+    minimize: true,
+    compress: {
+        warnings: false
+    }
+  }))
   outputFile = libraryName + '.min.js'
 }
 
 // # CREATE CONFIG
 const config = {
-  devtool: 'source-map',
+  devtool: 'eval',
   entry: __dirname + inputPath + '/index.js',
+  eslint: {
+    configFile: './.eslintrc'
+  },
   output: {
     filename: outputFile,
     library: libraryName,
     libraryTarget: 'umd',
-    path: __dirname + outputPath,
-    umdNamedDefine: true
+    path: __dirname + outputPath
   },
   module: {
-    loaders
+    loaders,
+    preLoaders
   },
   plugins,
   resolve: {

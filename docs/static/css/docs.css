@@ -1,0 +1,26 @@
+.docs-header {
+  font-weight: bold;
+}
+
+.docs-section {
+  border-top: 3px solid #DDD;
+  padding: 30px 0;
+}
+
+.docs-section .button {
+  margin-right: 15px;
+}
+
+
+.docs-section .columns {
+  background: #EEE;
+  text-align: center;
+  border-radius: 4px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  height: 30px;
+  line-height: 30px;
+  margin-bottom: .75rem;
+  font-weight: 600;
+  letter-spacing: .1rem;
+}
